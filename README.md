@@ -12,29 +12,17 @@ You're looking for a way to clean up Windows 10 using the Command Prompt (Cmd). 
 :: Remove all temporary files.
 
     del /f /s /q %tmp%\*.*
-
 #
-
     del /f /s /q %temp%\*.*
 #
-
-
     del /f /s /q %systemdrive%\*.tmp
-
-
-
+#
     del /f /s /q %systemdrive%\*._mp
-
-
-
+#
     del /f /s /q %windir%\temp\*.*
-
-
-
+#
     del /f /s /q %AppData%\temp\*.*
-
-
-
+#
     del /f /s /q %HomePath%\AppData\LocalLow\Temp\*.*
 
 
