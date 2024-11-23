@@ -8,6 +8,25 @@ You're looking for a way to clean up Windows 10 using the Command Prompt (Cmd). 
 
     cleanmgr
 
+
+:: Remove all temporary files.
+
+    del /f /s /q %tmp%\*.*
+
+    del /f /s /q %temp%\*.*
+
+    del /f /s /q %systemdrive%\*.tmp
+
+    del /f /s /q %systemdrive%\*._mp
+
+    del /f /s /q %windir%\temp\*.*
+
+    del /f /s /q %AppData%\temp\*.*
+
+    del /f /s /q %HomePath%\AppData\LocalLow\Temp\*.*
+
+
+
 This command opens the Disk Cleanup tool, which allows you to delete temporary files, system files, and other items you don't need.
 
 **2. System File Checker**
