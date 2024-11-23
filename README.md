@@ -11,6 +11,9 @@ You're looking for a way to clean up Windows 10 using the Command Prompt (Cmd). 
 
 :: Remove all temporary files.
 
+#
+    del /q /f /s %temp%\*
+#    
     del /f /s /q %tmp%\*.*
 #
     del /f /s /q %temp%\*.*
@@ -25,35 +28,47 @@ You're looking for a way to clean up Windows 10 using the Command Prompt (Cmd). 
 #
     del /f /s /q %HomePath%\AppData\LocalLow\Temp\*.*
 
+:: Remove log, trace, old and backup files.
 
+#
+    del /f /s /q %systemdrive%\*.log
+#
+    del /f /s /q %systemdrive%\*.old
+#
+    del /f /s /q %systemdrive%\*.trace
+#
+    del /f /s /q %windir%\*.bak
 
+:: Remove restored files created by an checkdisk utility.
 
+#
+    del /f /s /q %systemdrive%\*.chk
 
-This command opens the Disk Cleanup tool, which allows you to delete temporary files, system files, and other items you don't need.
+#
+    del /f /s /q %windir%\system32\energy-report.html  
+    
+:: Remove extracted, not needed files of driver installators.
+# 
+    del /f /s /q %systemdrive%\AMD\*.*
+#
+    del /f /s /q %systemdrive%\NVIDIA\*.*
+#
+    del /f /s /q %systemdrive%\INTEL\*.*
 
-**2. System File Checker**
+:: Remove files of already downloaded windows updates.
+#
+    del /f /s /q %windir%\SoftwareDistribution\Download  
 
-     sfc /scannow
+Clear the Recycle Bin
+#
+      rd /s /q C:\$Recycle.Bin
 
-This command scans your system files and replaces any corrupted or missing files.
+#
+    cleanmgr /sagerun:1
 
-**3. DISM (Deployment Image Servicing and Management)**
+#
 
-    dism /online /cleanup-image /restorehealth
-
-This command scans your system for corrupted files and replaces them with healthy ones.
-
-**4. Temporary Files**
-
-    del /q /f /s %temp%\*
-
-This command deletes all temporary files in the Temp folder.
-
-**5. Windows Update Cleanup**
-
-    dism /online /cleanup-image /startcomponentcleanup
-
-This command cleans up Windows Update files and frees up disk space.
+    
 
 **6. System Error Logs**
 
@@ -82,6 +97,32 @@ This command clears the Windows Store cache.
 **10. Disk Defragmentation**
 
     defrag c: -v -u
+    
+This command opens the Disk Cleanup tool, which allows you to delete temporary files, system files, and other items you don't need.
+
+**2. System File Checker**
+
+     sfc /scannow
+
+This command scans your system files and replaces any corrupted or missing files.
+
+**3. DISM (Deployment Image Servicing and Management)**
+
+    dism /online /cleanup-image /restorehealth
+
+This command scans your system for corrupted files and replaces them with healthy ones.
+
+**4. Temporary Files**
+
+    del /q /f /s %temp%\*
+
+This command deletes all temporary files in the Temp folder.
+
+**5. Windows Update Cleanup**
+
+    dism /online /cleanup-image /startcomponentcleanup
+
+This command cleans up Windows Update files and frees up disk space.
 
 This command defragments the C: drive.
 
