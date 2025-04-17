@@ -1,3 +1,37 @@
+#!/bin/bash
+
+# Clean up temporary files
+echo "Cleaning up temporary files..."
+rm -rf /tmp/*
+rm -rf ~/.cache/*
+
+# Clear DNS cache (Windows command)
+echo "Clearing DNS cache..."
+ipconfig /flushdns
+
+# Clear Windows Store cache (Windows command)
+echo "Clearing Windows Store cache..."
+wsreset.exe
+
+# Disk defragmentation (Windows command)
+echo "Defragmenting the C: drive..."
+defrag C: -v -u
+
+# System File Checker (Windows command)
+echo "Running System File Checker..."
+sfc /scannow
+
+# DISM command (Windows command)
+echo "Running DISM..."
+dism /online /cleanup-image /restorehealth
+
+# Windows Update Cleanup (Windows command)
+echo "Cleaning up Windows Update files..."
+dism /online /cleanup-image /startcomponentcleanup
+
+echo "Cleanup completed."
+
+
 # windows-10-cleaner-cmd
 windows 10 cleaner cmd
 
